@@ -4,7 +4,7 @@ export default async (request: Request, context: Context) => {
     const data = await request.json();
     //let data = context.json(body);
     let pkg = {
-      'apikey':data.spikey,
+      'apikey':data.apikey,
       'data': {
         'model':'gpt-3.5-turbo',
         'messages':[{'role':'user','content':data.prompt}]
