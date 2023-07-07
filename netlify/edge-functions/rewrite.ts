@@ -16,7 +16,7 @@ export default async (request: Request, context: Context) => {
     
     const url = new URL("/v1/chat/completions/", host);
     context.log(url)
-    const res = await fetch(url,config);
+    const res = await fetch(url.href,config);
     return Response.json(res);
 
 };
