@@ -8,7 +8,7 @@ export default async (request: Request, context: Context) => {
       'apikey':data.apikey,
       'data': {
         'model':'gpt-3.5-turbo',
-        'messages':[{'role':'user','content':data.apikey}]
+        'messages':[{'role':'user','content':data.prompt}]
       }
     }
     let config = {
@@ -17,7 +17,7 @@ export default async (request: Request, context: Context) => {
         'Authorization': 'Bearer '+ pkg.apikey,
       },
       method:'POST',
-      body:JSON.stringify(pkg.data)
+      body:context.json(pkg.data)
     }
     const url = new URL("/", 'https://api.openai.com/v1/chat/completions');
     const res = await fetch(url,config);
