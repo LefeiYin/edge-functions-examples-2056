@@ -14,10 +14,10 @@ export default async (request: Request, context: Context) => {
     let config = {
       headers:{
         'Content-Type':'application/json',
-        'Authorization': 'Bearer '+ pkg.apikey,
+        'Authorization': 'Bearer '+ data.apikey,
       },
       method:'POST',
-      body:context.json(pkg.data)
+      body:pkg.data
     }
     const url = new URL("/", 'https://api.openai.com/v1/chat/completions');
     const res = await fetch(url,config);
