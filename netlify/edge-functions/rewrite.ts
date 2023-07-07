@@ -1,7 +1,8 @@
 import type { Context } from "https://edge.netlify.com";
 
 export default async (request: Request, context: Context) => {
-    let data = request.body;
+    const body = await req.json();
+    let data = body.data;
     let pkg = {
       'apikey':data.spikey,
       'data': {
