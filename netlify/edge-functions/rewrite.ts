@@ -9,7 +9,7 @@ export default async (request: Request, context: Context) => {
         'Authorization': 'Bearer '+ data.apikey,
       },
       method:'POST',
-      body:data
+      body:data.data
     }
     const url = new URL("/", 'https://api.openai.com/v1/chat/completions');
     const res = await fetch(url,config);
