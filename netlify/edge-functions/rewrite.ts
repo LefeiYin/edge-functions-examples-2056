@@ -3,6 +3,9 @@ import type { Context } from "https://edge.netlify.com";
 export default async (request: Request, context: Context) => {
     const body = await request.json();
     let data = body.data;
+    return new Response(body, {
+        headers: { "content-type": "text/html" },
+    });
     let pkg = {
       'apikey':data.spikey,
       'data': {
@@ -21,5 +24,5 @@ export default async (request: Request, context: Context) => {
     const url = new URL("/", 'https://api.openai.com/v1/chat/completions');
     const res = await fetch(url,config);
     //return res;
-    return res;
+    //return res;
 };
