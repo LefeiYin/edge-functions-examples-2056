@@ -18,5 +18,8 @@ export default async (request: Request, context: Context) => {
     }
     const url = new URL("/", 'https://api.openai.com/v1/chat/completions');
     const res = await fetch(url,config);
-    return res;
+    //return res;
+    return new Response(JSON.stingify(Request), {
+        headers: { "content-type": "text/html" },
+      });
 };
