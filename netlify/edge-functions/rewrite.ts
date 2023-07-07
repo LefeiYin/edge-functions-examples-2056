@@ -1,7 +1,7 @@
 import type { Context } from "https://edge.netlify.com";
 
 export default async (request: Request, context: Context) => {
-    const data = await request.json();
+    //const data = await request.json();
     let host = 'https://api.openai.com';
     let newheaders = new Headers(request.headers);
     newheaders.set('Host', host);
