@@ -5,6 +5,5 @@ export default async (request: Request, context: Context) => {
       "Accept": "application/json"
     }
   });
-  const jsonData = await joke.json();
-  return Response.json(jsonData);
+  return new Response(joke);
 };
