@@ -6,5 +6,5 @@ export default async (request: Request, context: Context) => {
     },
     'method': "GET"
   }).then((res)=>{return res;});
-  return new Response(joke);
+   console.log(joke)
 };
