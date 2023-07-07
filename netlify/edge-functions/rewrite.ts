@@ -1,11 +1,12 @@
 import type { Context } from "https://edge.netlify.com";
 
 export default async (request: Request, context: Context) => {
+    let data = request.body;
     let pkg = {
-      'apikey':'112233',
+      'apikey':data.spikey,
       'data': {
         'model':'gpt-3.5-turbo',
-        'messages':[{'role':'user','content':'你使用的是什么模型？是最新的模型吗'}]
+        'messages':[{'role':'user','content':data.prompt}]
       }
     }
     let config = {
@@ -19,7 +20,5 @@ export default async (request: Request, context: Context) => {
     const url = new URL("/", 'https://api.openai.com/v1/chat/completions');
     const res = await fetch(url,config);
     //return res;
-    return new Response(request.body, {
-        headers: { "content-type": "text/html" },
-      });
+    return res;
 };
