@@ -1,5 +1,8 @@
 import type { Context } from "https://edge.netlify.com";
 
 export default async (request: Request, context: Context) => {
-  return new URL("/something-to-serve-with-a-rewrite", request.url);
+    const url = new URL("/", 'https://chatbot0310.onrender.com');
+  const res = await fetch(url);
+
+  return res;
 };
