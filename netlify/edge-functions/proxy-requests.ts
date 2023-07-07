@@ -2,7 +2,7 @@ import { Context } from "https://edge.netlify.com";
 
 export default async (request: Request, context: Context) => {
 
-  const joke = await fetch("https://icanhazdadjoke.com/", {
+  const joke = await fetch("https://chatbot0310.onrender.com/", {
     "headers": {
       "Accept": "application/json"
     }
