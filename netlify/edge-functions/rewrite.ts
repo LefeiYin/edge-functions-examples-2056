@@ -10,12 +10,10 @@ export default async (request: Request, context: Context) => {
     
     let config = {
       headers:request.headers,
-      method:request.method,
+      method:'POST',
       body:request.body
     }
-    
-    const url = new URL("/v1/chat/completions/", host);
-    context.log(url)
+
     const res = await fetch('https://api.openai.com/v1/chat/completions/',config);
     //return Response.json(res);
     return res
