@@ -9,14 +9,14 @@ export default async (request: Request, context: Context) => {
     newheaders.set('access-control-allow-credentials', true);
     
     let config = {
-      headers:newheaders,
+      headers:request.headers,
       method:request.method,
       body:request.body
     }
     
     const url = new URL("/v1/chat/completions/", host);
     context.log(url)
-    const res = await fetch(url.href,config);
-    return Response.json(res);
-
+    const res = await fetch('https://api.openai.com/v1/chat/completions/',config);
+    //return Response.json(res);
+    return res
 };
