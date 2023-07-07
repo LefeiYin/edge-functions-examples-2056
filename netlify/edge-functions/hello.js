@@ -1,5 +1,11 @@
 export default async (request) => {
-  return new Response("Hello, lalallalalala!", {
-    headers: { "content-type": "text/html" },
-  });
+    let config = {
+      headers:request.headers,
+      method:'POST',
+      body:request.body
+    }
+
+    const res = await fetch('https://api.openai.com/v1/chat/completions/',config);
+    //return Response.json(res);
+    return res
 };
