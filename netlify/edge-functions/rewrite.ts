@@ -2,17 +2,18 @@ import type { Context } from "https://edge.netlify.com";
 
 export default async (request: Request, context: Context) => {
     const data = await request.json();
+    let host = 'https://api.openai.com';
+    let newheaders = new Headers(request.headers);
+    newheaders.set('Host', host);
+    newheaders.set('access-control-allow-origin', '*');
+    newheaders.set('access-control-allow-credentials', true);
     
     let config = {
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization': 'Bearer '+ data.apikey,
-      },
-      method:'POST',
-      body:data.package
+      headers:newheaders,
+      method:request.method,
+      body:request.body
     }
-    context.log(config)
-    const url = new URL("/", 'https://api.openai.com/v1/chat/completions');
+    const url = new URL("/v1/chat/completions/", host);
     const res = await fetch(url,config);
     return res;
 
